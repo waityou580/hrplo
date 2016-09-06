@@ -170,6 +170,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Global.vi_VN.Designer.cs">
+      <DependentUpon>Global.vi_VN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Global.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -180,6 +190,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -192,6 +203,13 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="vendor\angular.js" />
+    <Content Include="vendor\animate.css" />
+    <Content Include="vendor\bootstrap.css" />
+    <Content Include="vendor\bootstrap.js" />
+    <Content Include="vendor\custom.min.css" />
+    <Content Include="vendor\font-awesome.css" />
+    <Content Include="vendor\wow.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -214,6 +232,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Global.vi_VN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.vi_VN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Global.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
