@@ -11,6 +11,10 @@ namespace HRPLO.Areas.AdminHome.Controllers
         // GET: AdminHome/Home
         public ActionResult Index()
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Login", "Login", new {area="Login"});
+            }
             return View();
         }
     }

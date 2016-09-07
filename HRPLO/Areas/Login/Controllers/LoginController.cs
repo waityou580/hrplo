@@ -32,7 +32,19 @@ namespace HRPLO.Areas.Login.Controllers
         [HttpPost]
         public ActionResult Submit(string username, string password)
         {
-            return View(username);
+            USER usr = db.USERS.SingleOrDefault(n => n.USER_NAME == username && n.USER_PASS == password);
+            if(usr != null)
+            {
+                Session["user"] = "admin";
+                return RedirectToAction("Index", "Home",new {area = "AdminHome"}); // "AdminHome/Home"
+            }
+            return RedirectToAction("Login", "Login");
+        }
+
+        public ActionResult Logout()
+        {
+            Session["user"] = null; //Session.clear()
+            return RedirectToAction("Login", "Login", new {area = "Login"});
         }
     }
 }
