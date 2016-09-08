@@ -40,6 +40,7 @@ namespace HRPLO.Areas.Basic.Controllers
         public ActionResult List_Comp()
         {
             List<EM_COMP> lst_Comp =  db.EM_COMP.Take(10).ToList();
+
             return View(lst_Comp);
         }
     }

@@ -13,13 +13,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- NProgress -->
-    @*<link href="../vendors/nprogress/nprogress.css" rel="stylesheet">*@
+    <link href="~/vendor/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    @*<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">*@
+    <link href="~/vendor/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
-    @*<link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">*@
+    <link href="~/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    @*<link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />*@
+    <link href="~/vendor/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
     <!-- Custom Theme Style -->
     <link href="~/vendor/custom.min.css" rel="stylesheet" />
 
@@ -592,6 +592,10 @@
     </script>
     <!-- /gauge.js -->
     <!-- Datatables -->
+    <!-- jQuery -->
+    <script src="~/vendor/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="~/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -608,8 +612,56 @@
     <script src="~/vendor/jszip/dist/jszip.min.js"></script>
     <script src="~/vendor/pdfmake/build/pdfmake.min.js"></script>
     <script src="~/vendor/pdfmake/build/vfs_fonts.js"></script>
-    
-    <!-- /Datatables -->
+
+    <script>
+      $(document).ready(function() {
+        TableManageButtons = function() {
+          "use strict";
+          return {
+            init: function() {
+              handleDataTableButtons();
+            }
+          };
+        }();
+
+        $('#datatable').dataTable();
+
+        $('#datatable-keytable').DataTable({
+          keys: true
+        });
+
+        $('#datatable-responsive').DataTable();
+
+        $('#datatable-scroller').DataTable({
+          ajax: "js/datatables/json/scroller-demo.json",
+          deferRender: true,
+          scrollY: 380,
+          scrollCollapse: true,
+          scroller: true
+        });
+
+        $('#datatable-fixed-header').DataTable({
+          fixedHeader: true
+        });
+
+        var $datatable = $('#datatable-checkbox');
+
+        $datatable.dataTable({
+          'order': [[ 1, 'asc' ]],
+          'columnDefs': [
+            { orderable: false, targets: [0] }
+          ]
+        });
+        $datatable.on('draw.dt', function() {
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-green'
+          });
+        });
+
+        TableManageButtons.init();
+      });
+    </script>
+<!-- /Datatables -->
 </body>
 </html>
 
