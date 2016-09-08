@@ -61,6 +61,150 @@ namespace HRPLO.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Basic Infomation.
+        /// </summary>
+        public static string Basic_Info {
+            get {
+                return ResourceManager.GetString("Basic_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Boss.
+        /// </summary>
+        public static string Comp_Boss {
+            get {
+                return ResourceManager.GetString("Comp_Boss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company China Name.
+        /// </summary>
+        public static string Comp_CN {
+            get {
+                return ResourceManager.GetString("Comp_CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Fax.
+        /// </summary>
+        public static string Comp_Fax {
+            get {
+                return ResourceManager.GetString("Comp_Fax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Infomation.
+        /// </summary>
+        public static string Comp_Info {
+            get {
+                return ResourceManager.GetString("Comp_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Mail.
+        /// </summary>
+        public static string Comp_Mail {
+            get {
+                return ResourceManager.GetString("Comp_Mail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        public static string Comp_Name {
+            get {
+                return ResourceManager.GetString("Comp_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company No.
+        /// </summary>
+        public static string Comp_No {
+            get {
+                return ResourceManager.GetString("Comp_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Telephone.
+        /// </summary>
+        public static string Comp_Tel {
+            get {
+                return ResourceManager.GetString("Comp_Tel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congrualation! You are create success.
+        /// </summary>
+        public static string Create_Success {
+            get {
+                return ResourceManager.GetString("Create_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do Time.
+        /// </summary>
+        public static string Do_Time {
+            get {
+                return ResourceManager.GetString("Do_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do User.
+        /// </summary>
+        public static string Do_User {
+            get {
+                return ResourceManager.GetString("Do_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Factory Information.
+        /// </summary>
+        public static string Fact_Info {
+            get {
+                return ResourceManager.GetString("Fact_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice Address.
+        /// </summary>
+        public static string INV_ADD {
+            get {
+                return ResourceManager.GetString("INV_ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is Active.
+        /// </summary>
+        public static string IS_ACT {
+            get {
+                return ResourceManager.GetString("IS_ACT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string Login {
@@ -84,6 +228,15 @@ namespace HRPLO.Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
             }
         }
         

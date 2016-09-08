@@ -15,6 +15,11 @@ namespace HRPLO.Areas.Login.Controllers
         // GET: Login/Login
         public ActionResult Login()
         {
+            Session["user"] = "admin";
+            if (Session["user"] != null)
+            {
+                return RedirectToAction("Index", "Home", new { area = "AdminHome" }); // "AdminHome/Home"
+            }
             return View();
         }
         public ActionResult Change(String LanguageAbbrevation)

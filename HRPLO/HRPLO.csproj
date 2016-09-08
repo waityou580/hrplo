@@ -171,14 +171,44 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdminHome\AdminHomeAreaRegistration.cs" />
     <Compile Include="Areas\AdminHome\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Basic\BasicAreaRegistration.cs" />
+    <Compile Include="Areas\Basic\Controllers\CompController.cs" />
+    <Compile Include="Areas\Basic\Controllers\FactController.cs" />
     <Compile Include="Areas\Login\Controllers\LoginController.cs" />
     <Compile Include="Areas\Login\LoginAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBContext.cs" />
-    <Compile Include="Models\USER.cs" />
-    <Compile Include="Models\USER_GROUP.cs" />
+    <Compile Include="Models\DBContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EM_BRANCH.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EM_COMP.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EM_FACT.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USER.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USER_GROUP.cs">
+      <DependentUpon>DBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Global.zh.Designer.cs">
       <DependentUpon>Global.zh.resx</DependentUpon>
@@ -203,6 +233,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DBContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBContext.edmx</DependentUpon>
+      <LastGenOutput>DBContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DBContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBContext.edmx</DependentUpon>
+      <LastGenOutput>DBContext.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -212,6 +252,16 @@
     <Content Include="Areas\AdminHome\Views\web.config" />
     <Content Include="Areas\AdminHome\Views\Layout\_LayoutAdmin.cshtml" />
     <Content Include="Areas\AdminHome\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Basic\Views\web.config" />
+    <Content Include="Areas\Basic\Views\Comp\Comp_Index.cshtml" />
+    <EntityDeploy Include="Models\DBContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DBContext.edmx.diagram">
+      <DependentUpon>DBContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Basic\Views\Fact\Fact_Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -220,6 +270,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\custom.js" />
+    <Content Include="Scripts\js\custom.min.js" />
+    <Content Include="Scripts\js\datepicker\daterangepicker.js" />
+    <Content Include="Scripts\js\moment\moment.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -4441,6 +4495,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminHome\Models\" />
     <Folder Include="Areas\AdminHome\Views\Shared\" />
+    <Folder Include="Areas\Basic\Models\" />
+    <Folder Include="Areas\Basic\Views\Shared\" />
     <Folder Include="Areas\Login\Models\" />
     <Folder Include="Areas\Login\Views\Shared\" />
     <Folder Include="Controllers\" />
@@ -4473,6 +4529,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

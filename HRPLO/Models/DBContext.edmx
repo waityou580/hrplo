@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HRPLOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EM_BRANCH">
+          <Key>
+            <PropertyRef Name="BRANCH_NO" />
+          </Key>
+          <Property Name="FACT_NO" Type="nvarchar" MaxLength="50" />
+          <Property Name="BRANCH_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BRANCH_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="BRANCH_CN" Type="nvarchar" MaxLength="150" />
+          <Property Name="IS_ACT" Type="bit" />
+          <Property Name="DO_USER" Type="nvarchar" MaxLength="150" />
+          <Property Name="DO_TIME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EM_COMP">
+          <Key>
+            <PropertyRef Name="COMP_NO" />
+          </Key>
+          <Property Name="COMP_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="COMP_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="COMP_CN" Type="nvarchar" MaxLength="150" />
+          <Property Name="INV_ADD" Type="nvarchar" MaxLength="150" />
+          <Property Name="COMP_BOSS" Type="nvarchar" MaxLength="150" />
+          <Property Name="COMP_TEL" Type="nvarchar" MaxLength="150" />
+          <Property Name="COMP_FAX" Type="nvarchar" MaxLength="150" />
+          <Property Name="COMP_MAIL" Type="nvarchar" MaxLength="150" />
+          <Property Name="IS_ACT" Type="bit" />
+          <Property Name="DO_TIME" Type="nvarchar" MaxLength="150" />
+          <Property Name="DO_USER" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EM_FACT">
+          <Key>
+            <PropertyRef Name="FACT_NO" />
+          </Key>
+          <Property Name="COMP_NO" Type="nvarchar" MaxLength="50" />
+          <Property Name="FACT_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FACT_NAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="FACT_CN" Type="nvarchar" MaxLength="150" />
+          <Property Name="IS_ACT" Type="bit" />
+          <Property Name="FACT_TYPE" Type="int" />
+          <Property Name="DO_TIME" Type="nvarchar" MaxLength="150" />
+          <Property Name="DO_USER" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USER_GROUP">
+          <Key>
+            <PropertyRef Name="UG_NO" />
+          </Key>
+          <Property Name="UG_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UG_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRI_SEE" Type="bit" />
+          <Property Name="PRI_CRE" Type="bit" />
+          <Property Name="PRI_EDT" Type="bit" />
+          <Property Name="PRI_DEL" Type="bit" />
+          <Property Name="PRI_IMP" Type="bit" />
+          <Property Name="PRI_EXP" Type="bit" />
+          <Property Name="DO_USERS" Type="nvarchar" MaxLength="50" />
+          <Property Name="DO_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="IS_ACT" Type="bit" />
+          <Property Name="USER_NO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USER_NO" />
+          </Key>
+          <Property Name="USER_NO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USER_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="USER_PASS" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRI_SEE" Type="bit" />
+          <Property Name="PRI_CRE" Type="bit" />
+          <Property Name="PRI_EDT" Type="bit" />
+          <Property Name="PRI_DEL" Type="bit" />
+          <Property Name="PRI_IMP" Type="bit" />
+          <Property Name="PRI_EXP" Type="bit" />
+          <Property Name="LOGIN_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DO_USERS" Type="nvarchar" MaxLength="50" />
+          <Property Name="DO_TIME" Type="nvarchar" MaxLength="50" />
+          <Property Name="IS_ACT" Type="bit" />
+          <Property Name="LOGIN_FALSE" Type="int" />
+        </EntityType>
+        <Association Name="FK_EM_BRANCH_EM_FACT">
+          <End Role="EM_FACT" Type="Self.EM_FACT" Multiplicity="0..1" />
+          <End Role="EM_BRANCH" Type="Self.EM_BRANCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM_FACT">
+              <PropertyRef Name="FACT_NO" />
+            </Principal>
+            <Dependent Role="EM_BRANCH">
+              <PropertyRef Name="FACT_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EM_FACT_EM_COMP">
+          <End Role="EM_COMP" Type="Self.EM_COMP" Multiplicity="0..1" />
+          <End Role="EM_FACT" Type="Self.EM_FACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM_COMP">
+              <PropertyRef Name="COMP_NO" />
+            </Principal>
+            <Dependent Role="EM_FACT">
+              <PropertyRef Name="COMP_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_GROUP_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="USER_GROUP" Type="Self.USER_GROUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_NO" />
+            </Principal>
+            <Dependent Role="USER_GROUP">
+              <PropertyRef Name="USER_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRPLOModelStoreContainer">
+          <EntitySet Name="EM_BRANCH" EntityType="Self.EM_BRANCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EM_COMP" EntityType="Self.EM_COMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EM_FACT" EntityType="Self.EM_FACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_GROUP" EntityType="Self.USER_GROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EM_BRANCH_EM_FACT" Association="Self.FK_EM_BRANCH_EM_FACT">
+            <End Role="EM_FACT" EntitySet="EM_FACT" />
+            <End Role="EM_BRANCH" EntitySet="EM_BRANCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EM_FACT_EM_COMP" Association="Self.FK_EM_FACT_EM_COMP">
+            <End Role="EM_COMP" EntitySet="EM_COMP" />
+            <End Role="EM_FACT" EntitySet="EM_FACT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_GROUP_USERS" Association="Self.FK_USER_GROUP_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="USER_GROUP" EntitySet="USER_GROUP" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRPLOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="USER_GROUP">
+          <Key>
+            <PropertyRef Name="UG_NO" />
+          </Key>
+          <Property Name="UG_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UG_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRI_SEE" Type="Boolean" />
+          <Property Name="PRI_CRE" Type="Boolean" />
+          <Property Name="PRI_EDT" Type="Boolean" />
+          <Property Name="PRI_DEL" Type="Boolean" />
+          <Property Name="PRI_IMP" Type="Boolean" />
+          <Property Name="PRI_EXP" Type="Boolean" />
+          <Property Name="DO_USERS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DO_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IS_ACT" Type="Boolean" />
+          <Property Name="USER_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="USER" Relationship="HRPLOModel.FK_USER_GROUP_USERS" FromRole="USER_GROUP" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USER_NO" />
+          </Key>
+          <Property Name="USER_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USER_PASS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRI_SEE" Type="Boolean" />
+          <Property Name="PRI_CRE" Type="Boolean" />
+          <Property Name="PRI_EDT" Type="Boolean" />
+          <Property Name="PRI_DEL" Type="Boolean" />
+          <Property Name="PRI_IMP" Type="Boolean" />
+          <Property Name="PRI_EXP" Type="Boolean" />
+          <Property Name="LOGIN_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DO_USERS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DO_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IS_ACT" Type="Boolean" />
+          <Property Name="LOGIN_FALSE" Type="Int32" />
+          <NavigationProperty Name="USER_GROUP" Relationship="HRPLOModel.FK_USER_GROUP_USERS" FromRole="USER" ToRole="USER_GROUP" />
+        </EntityType>
+        <EntityContainer Name="DBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="USER_GROUP" EntityType="Self.USER_GROUP" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="EM_BRANCH" EntityType="HRPLOModel.EM_BRANCH" />
+          <EntitySet Name="EM_COMP" EntityType="HRPLOModel.EM_COMP" />
+          <EntitySet Name="EM_FACT" EntityType="HRPLOModel.EM_FACT" />
+          <AssociationSet Name="FK_EM_BRANCH_EM_FACT" Association="HRPLOModel.FK_EM_BRANCH_EM_FACT">
+            <End Role="EM_FACT" EntitySet="EM_FACT" />
+            <End Role="EM_BRANCH" EntitySet="EM_BRANCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EM_FACT_EM_COMP" Association="HRPLOModel.FK_EM_FACT_EM_COMP">
+            <End Role="EM_COMP" EntitySet="EM_COMP" />
+            <End Role="EM_FACT" EntitySet="EM_FACT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_GROUP_USERS" Association="HRPLOModel.FK_USER_GROUP_USERS">
+            <End Role="USER" EntitySet="USERS" />
+            <End Role="USER_GROUP" EntitySet="USER_GROUP" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EM_BRANCH">
+          <Key>
+            <PropertyRef Name="BRANCH_NO" />
+          </Key>
+          <Property Name="FACT_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BRANCH_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BRANCH_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BRANCH_CN" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IS_ACT" Type="Boolean" />
+          <Property Name="DO_USER" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DO_TIME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EM_FACT" Relationship="HRPLOModel.FK_EM_BRANCH_EM_FACT" FromRole="EM_BRANCH" ToRole="EM_FACT" />
+        </EntityType>
+        <EntityType Name="EM_COMP">
+          <Key>
+            <PropertyRef Name="COMP_NO" />
+          </Key>
+          <Property Name="COMP_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="COMP_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="COMP_CN" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="INV_ADD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="COMP_BOSS" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="COMP_TEL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="COMP_FAX" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="COMP_MAIL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IS_ACT" Type="Boolean" />
+          <Property Name="DO_TIME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DO_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EM_FACT" Relationship="HRPLOModel.FK_EM_FACT_EM_COMP" FromRole="EM_COMP" ToRole="EM_FACT" />
+        </EntityType>
+        <EntityType Name="EM_FACT">
+          <Key>
+            <PropertyRef Name="FACT_NO" />
+          </Key>
+          <Property Name="COMP_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FACT_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FACT_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FACT_CN" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IS_ACT" Type="Boolean" />
+          <Property Name="FACT_TYPE" Type="Int32" />
+          <Property Name="DO_TIME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DO_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EM_BRANCH" Relationship="HRPLOModel.FK_EM_BRANCH_EM_FACT" FromRole="EM_FACT" ToRole="EM_BRANCH" />
+          <NavigationProperty Name="EM_COMP" Relationship="HRPLOModel.FK_EM_FACT_EM_COMP" FromRole="EM_FACT" ToRole="EM_COMP" />
+        </EntityType>
+        <Association Name="FK_EM_BRANCH_EM_FACT">
+          <End Type="HRPLOModel.EM_FACT" Role="EM_FACT" Multiplicity="0..1" />
+          <End Type="HRPLOModel.EM_BRANCH" Role="EM_BRANCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM_FACT">
+              <PropertyRef Name="FACT_NO" />
+            </Principal>
+            <Dependent Role="EM_BRANCH">
+              <PropertyRef Name="FACT_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EM_FACT_EM_COMP">
+          <End Type="HRPLOModel.EM_COMP" Role="EM_COMP" Multiplicity="0..1" />
+          <End Type="HRPLOModel.EM_FACT" Role="EM_FACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EM_COMP">
+              <PropertyRef Name="COMP_NO" />
+            </Principal>
+            <Dependent Role="EM_FACT">
+              <PropertyRef Name="COMP_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_GROUP_USERS">
+          <End Type="HRPLOModel.USER" Role="USER" Multiplicity="0..1" />
+          <End Type="HRPLOModel.USER_GROUP" Role="USER_GROUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USER_NO" />
+            </Principal>
+            <Dependent Role="USER_GROUP">
+              <PropertyRef Name="USER_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRPLOModelStoreContainer" CdmEntityContainer="DBContext">
+          <EntitySetMapping Name="USER_GROUP">
+            <EntityTypeMapping TypeName="HRPLOModel.USER_GROUP">
+              <MappingFragment StoreEntitySet="USER_GROUP">
+                <ScalarProperty Name="USER_NO" ColumnName="USER_NO" />
+                <ScalarProperty Name="UG_NO" ColumnName="UG_NO" />
+                <ScalarProperty Name="UG_NAME" ColumnName="UG_NAME" />
+                <ScalarProperty Name="PRI_SEE" ColumnName="PRI_SEE" />
+                <ScalarProperty Name="PRI_CRE" ColumnName="PRI_CRE" />
+                <ScalarProperty Name="PRI_EDT" ColumnName="PRI_EDT" />
+                <ScalarProperty Name="PRI_DEL" ColumnName="PRI_DEL" />
+                <ScalarProperty Name="PRI_IMP" ColumnName="PRI_IMP" />
+                <ScalarProperty Name="PRI_EXP" ColumnName="PRI_EXP" />
+                <ScalarProperty Name="DO_USERS" ColumnName="DO_USERS" />
+                <ScalarProperty Name="DO_TIME" ColumnName="DO_TIME" />
+                <ScalarProperty Name="IS_ACT" ColumnName="IS_ACT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="HRPLOModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="USER_NO" ColumnName="USER_NO" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="USER_PASS" ColumnName="USER_PASS" />
+                <ScalarProperty Name="PRI_SEE" ColumnName="PRI_SEE" />
+                <ScalarProperty Name="PRI_CRE" ColumnName="PRI_CRE" />
+                <ScalarProperty Name="PRI_EDT" ColumnName="PRI_EDT" />
+                <ScalarProperty Name="PRI_DEL" ColumnName="PRI_DEL" />
+                <ScalarProperty Name="PRI_IMP" ColumnName="PRI_IMP" />
+                <ScalarProperty Name="PRI_EXP" ColumnName="PRI_EXP" />
+                <ScalarProperty Name="LOGIN_TIME" ColumnName="LOGIN_TIME" />
+                <ScalarProperty Name="DO_USERS" ColumnName="DO_USERS" />
+                <ScalarProperty Name="DO_TIME" ColumnName="DO_TIME" />
+                <ScalarProperty Name="IS_ACT" ColumnName="IS_ACT" />
+                <ScalarProperty Name="LOGIN_FALSE" ColumnName="LOGIN_FALSE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EM_BRANCH">
+            <EntityTypeMapping TypeName="HRPLOModel.EM_BRANCH">
+              <MappingFragment StoreEntitySet="EM_BRANCH">
+                <ScalarProperty Name="DO_TIME" ColumnName="DO_TIME" />
+                <ScalarProperty Name="DO_USER" ColumnName="DO_USER" />
+                <ScalarProperty Name="IS_ACT" ColumnName="IS_ACT" />
+                <ScalarProperty Name="BRANCH_CN" ColumnName="BRANCH_CN" />
+                <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
+                <ScalarProperty Name="BRANCH_NO" ColumnName="BRANCH_NO" />
+                <ScalarProperty Name="FACT_NO" ColumnName="FACT_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EM_COMP">
+            <EntityTypeMapping TypeName="HRPLOModel.EM_COMP">
+              <MappingFragment StoreEntitySet="EM_COMP">
+                <ScalarProperty Name="DO_USER" ColumnName="DO_USER" />
+                <ScalarProperty Name="DO_TIME" ColumnName="DO_TIME" />
+                <ScalarProperty Name="IS_ACT" ColumnName="IS_ACT" />
+                <ScalarProperty Name="COMP_MAIL" ColumnName="COMP_MAIL" />
+                <ScalarProperty Name="COMP_FAX" ColumnName="COMP_FAX" />
+                <ScalarProperty Name="COMP_TEL" ColumnName="COMP_TEL" />
+                <ScalarProperty Name="COMP_BOSS" ColumnName="COMP_BOSS" />
+                <ScalarProperty Name="INV_ADD" ColumnName="INV_ADD" />
+                <ScalarProperty Name="COMP_CN" ColumnName="COMP_CN" />
+                <ScalarProperty Name="COMP_NAME" ColumnName="COMP_NAME" />
+                <ScalarProperty Name="COMP_NO" ColumnName="COMP_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EM_FACT">
+            <EntityTypeMapping TypeName="HRPLOModel.EM_FACT">
+              <MappingFragment StoreEntitySet="EM_FACT">
+                <ScalarProperty Name="DO_USER" ColumnName="DO_USER" />
+                <ScalarProperty Name="DO_TIME" ColumnName="DO_TIME" />
+                <ScalarProperty Name="FACT_TYPE" ColumnName="FACT_TYPE" />
+                <ScalarProperty Name="IS_ACT" ColumnName="IS_ACT" />
+                <ScalarProperty Name="FACT_CN" ColumnName="FACT_CN" />
+                <ScalarProperty Name="FACT_NAME" ColumnName="FACT_NAME" />
+                <ScalarProperty Name="FACT_NO" ColumnName="FACT_NO" />
+                <ScalarProperty Name="COMP_NO" ColumnName="COMP_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

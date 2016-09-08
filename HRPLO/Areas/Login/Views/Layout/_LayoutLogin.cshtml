@@ -35,11 +35,11 @@
                         <h1>@Html.Label(HRPLO.Resources.Global.Login_Form)</h1>
                         <div>
                             @*<input type="text" class="form-control" id="username" placeholder="@Html.Name(HRPLO.Resources.Global.Username)" required="" />*@
-                            @Html.TextBox("username",null , new { @class= "form-control", @placeholder= @Html.Name(HRPLO.Resources.Global.Username), @required = true })
+                            @Html.TextBox("username",null , new { @class= "form-control", @placeholder= @Html.Name(HRPLO.Resources.Global.Username), @required = true})
                         </div>
                         <div>
                             @*<input type="password" class="form-control" id="password" placeholder="@Html.Name(HRPLO.Resources.Global.Password)" required="" />*@
-                            @Html.TextBox("password", null, new { @class = "form-control", @placeholder = @Html.Name(HRPLO.Resources.Global.Password), @required = true })
+                            @Html.TextBox("password", null, new { @class = "form-control", @placeholder = @Html.Name(HRPLO.Resources.Global.Password), @required = true})
                         </div>
                         <div class="clearfix">
                             @*<a class="btn btn-default submit" >@Html.ActionLink(HRPLO.Resources.Global.Login,"Submit","Login")</a>*@

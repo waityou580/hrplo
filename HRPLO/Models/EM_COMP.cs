@@ -12,30 +12,27 @@ namespace HRPLO.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class USER
+    public partial class EM_COMP
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USER()
+        public EM_COMP()
         {
-            this.USER_GROUP = new HashSet<USER_GROUP>();
+            this.EM_FACT = new HashSet<EM_FACT>();
         }
     
-        public string USER_NO { get; set; }
-        public string USER_NAME { get; set; }
-        public string USER_PASS { get; set; }
-        public Nullable<bool> PRI_SEE { get; set; }
-        public Nullable<bool> PRI_CRE { get; set; }
-        public Nullable<bool> PRI_EDT { get; set; }
-        public Nullable<bool> PRI_DEL { get; set; }
-        public Nullable<bool> PRI_IMP { get; set; }
-        public Nullable<bool> PRI_EXP { get; set; }
-        public string LOGIN_TIME { get; set; }
-        public string DO_USERS { get; set; }
-        public string DO_TIME { get; set; }
+        public string COMP_NO { get; set; }
+        public string COMP_NAME { get; set; }
+        public string COMP_CN { get; set; }
+        public string INV_ADD { get; set; }
+        public string COMP_BOSS { get; set; }
+        public string COMP_TEL { get; set; }
+        public string COMP_FAX { get; set; }
+        public string COMP_MAIL { get; set; }
         public Nullable<bool> IS_ACT { get; set; }
-        public Nullable<int> LOGIN_FALSE { get; set; }
+        public string DO_TIME { get; set; }
+        public string DO_USER { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER_GROUP> USER_GROUP { get; set; }
+        public virtual ICollection<EM_FACT> EM_FACT { get; set; }
     }
 }

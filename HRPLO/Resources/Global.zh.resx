@@ -117,6 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Basic_Info" xml:space="preserve">
+    <value>基本資料</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Comp_Boss" xml:space="preserve">
+    <value>公司代理人</value>
+  </data>
+  <data name="Comp_CN" xml:space="preserve">
+    <value>公司中文名稱</value>
+  </data>
+  <data name="Comp_Fax" xml:space="preserve">
+    <value>公司FAX</value>
+  </data>
+  <data name="Comp_Info" xml:space="preserve">
+    <value>公司資料</value>
+  </data>
+  <data name="Comp_Mail" xml:space="preserve">
+    <value>公司郵件</value>
+  </data>
+  <data name="Comp_Name" xml:space="preserve">
+    <value>公司名稱</value>
+  </data>
+  <data name="Comp_No" xml:space="preserve">
+    <value>公司代碼</value>
+  </data>
+  <data name="Comp_Tel" xml:space="preserve">
+    <value>公司電話</value>
+  </data>
+  <data name="Do_Time" xml:space="preserve">
+    <value>Do Time</value>
+  </data>
+  <data name="Do_User" xml:space="preserve">
+    <value>Do User</value>
+  </data>
+  <data name="Fact_Info" xml:space="preserve">
+    <value>工廠資料</value>
+  </data>
+  <data name="INV_ADD" xml:space="preserve">
+    <value>公司地址</value>
+  </data>
+  <data name="IS_ACT" xml:space="preserve">
+    <value>Is Active</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>登入</value>
   </data>
@@ -125,6 +170,9 @@
   </data>
   <data name="Password" xml:space="preserve">
     <value>密碼</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>確認</value>
   </data>
   <data name="Username" xml:space="preserve">
     <value>賬號</value>
