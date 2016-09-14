@@ -135,6 +135,9 @@
   <data name="Comp_Info" xml:space="preserve">
     <value>Company Infomation</value>
   </data>
+  <data name="Comp_INV" xml:space="preserve">
+    <value>Tax Code</value>
+  </data>
   <data name="Comp_Mail" xml:space="preserve">
     <value>Company Mail</value>
   </data>

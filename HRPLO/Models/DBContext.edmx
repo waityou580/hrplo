@@ -32,6 +32,7 @@
           <Property Name="IS_ACT" Type="bit" />
           <Property Name="DO_TIME" Type="nvarchar" MaxLength="150" />
           <Property Name="DO_USER" Type="nvarchar" MaxLength="50" />
+          <Property Name="COMP_INV" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EM_FACT">
           <Key>
@@ -227,6 +228,7 @@
           <Property Name="DO_TIME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="DO_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EM_FACT" Relationship="HRPLOModel.FK_EM_FACT_EM_COMP" FromRole="EM_COMP" ToRole="EM_FACT" />
+          <Property Name="COMP_INV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="EM_FACT">
           <Key>
@@ -339,6 +341,7 @@
           <EntitySetMapping Name="EM_COMP">
             <EntityTypeMapping TypeName="HRPLOModel.EM_COMP">
               <MappingFragment StoreEntitySet="EM_COMP">
+                <ScalarProperty Name="COMP_INV" ColumnName="COMP_INV" />
                 <ScalarProperty Name="DO_USER" ColumnName="DO_USER" />
                 <ScalarProperty Name="DO_TIME" ColumnName="DO_TIME" />
                 <ScalarProperty Name="IS_ACT" ColumnName="IS_ACT" />

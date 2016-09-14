@@ -31,6 +31,7 @@ namespace HRPLO.Models
         public Nullable<bool> IS_ACT { get; set; }
         public string DO_TIME { get; set; }
         public string DO_USER { get; set; }
+        public string COMP_INV { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EM_FACT> EM_FACT { get; set; }

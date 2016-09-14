@@ -115,6 +115,15 @@ namespace HRPLO.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tax Code.
+        /// </summary>
+        public static string Comp_INV {
+            get {
+                return ResourceManager.GetString("Comp_INV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Company Mail.
         /// </summary>
         public static string Comp_Mail {

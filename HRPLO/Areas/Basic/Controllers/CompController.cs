@@ -43,5 +43,11 @@ namespace HRPLO.Areas.Basic.Controllers
 
             return View(lst_Comp);
         }
+        //public ActionResult Detail_Comp(string Comp_No)
+        //{
+        //    var lst_Comp = db.EM_COMP.SingleOrDefault(n => n.COMP_NO == Comp_No);
+        //    ViewData["Comp"] = lst_Comp;
+        //    return View("Comp_Index");
+        //}
     }
 }
